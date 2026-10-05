@@ -15,11 +15,6 @@ body {
     min-height: 100vh;
 }
 
-
-/* =========================
-   SIDEBAR
-========================= */
-
 .sidebar {
     width: 220px;
     min-height: 100vh;
@@ -93,11 +88,6 @@ nav {
 .shift span {
     color: #55bd7c;
 }
-
-
-/* =========================
-   MAIN
-========================= */
 
 .main {
     flex: 1;
@@ -188,11 +178,6 @@ nav {
     margin-top: 2px;
 }
 
-
-/* =========================
-   STAT CARDS
-========================= */
-
 .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -248,11 +233,6 @@ nav {
     background: #ffe3e3;
 }
 
-
-/* =========================
-   INVENTORY
-========================= */
-
 .inventory-header {
     display: flex;
     justify-content: space-between;
@@ -278,11 +258,6 @@ nav {
     font-size: 11px;
     outline: none;
 }
-
-
-/* =========================
-   INVENTORY CARDS
-========================= */
 
 .inventory-grid {
     display: grid;
@@ -410,11 +385,6 @@ nav {
     color: #d52323;
     background: #ffe3e3;
 }
-
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 1000px) {
 

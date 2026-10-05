@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BrewStock - Inventory</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        
+        <aside class="sidebar">
+
+            <div class="brand">
+                BrewStock
+            </div>
+
+            <div class="brand-line"></div>
+
+            <nav>
+
+                <a href="#" class="nav-item active">
+                    <span>▣</span>
+                    Inventory
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>♙</span>
+                    Staff Accounts
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>🛒</span>
+                    Order Management
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>♧</span>
+                    Stock Alerts
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>▤</span>
+                    Usage & Waste
+                </a>
+
+            </nav>
+
+            <div class="shift-status">
+                <span></span>
+                SHIFT ACTIVE
+            </div>
+
+        </aside>
+
+
+       
+        <main class="main">
+
+          
+            <header class="header">
+
+                <div>
+                    <h1>Inventory</h1>
+
+                    <p>
+                        Track, log, and reorder daily cafe supplies.
+                    </p>
+                </div>
+
+
+                <div class="header-right">
+
+                    <div class="search-box">
+
+                        <span>⌕</span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search items..."
+                        >
+
+                    </div>
+
+
+                    <div class="profile">
+
+                        <div class="avatar">
+                            ER
+                        </div>
+
+                        <div>
+                            <strong>Elena Rostova</strong>
+                            <small>Cafe Lead</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+           
+            <section class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+                        Total Items
+
+                        <span class="badge green">
+                            Active
+                        </span>
+                    </div>
+
+                    <h2 id="totalItems">
+                        124
+                    </h2>
+
+                    <p>
+                        Tracked café supply SKUs
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+                        Low Stock Alerts
+
+                        <span class="badge yellow">
+                            Action Needed
+                        </span>
+                    </div>
+
+                    <h2 id="lowStock">
+                        2
+                    </h2>
+
+                    <p>
+                        Items below safety threshold
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+                        Critical Items
+
+                        <span class="badge red">
+                            Urgent
+                        </span>
+                    </div>
+
+                    <h2 id="criticalItems">
+                        1
+                    </h2>
+
+                    <p>
+                        Requires immediate reorder
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-title">
+                        Stock Categories
+                    </div>
+
+                    <h2 id="categories">
+                        8
+                    </h2>
+
+                    <p>
+                        Active inventory categories
+                    </p>
+
+                </div>
+
+            </section>
+
+
+           
+            <section class="inventory-section">
+
+                <div class="inventory-header">
+
+                    <h2>
+                        All Café Supplies
+                    </h2>
+
+                    <div class="filters">
+
+                        <select id="categoryFilter">
+
+                            <option value="all">
+                                Category: All
+                            </option>
+
+                            <option value="beans">
+                                Beans & Espresso
+                            </option>
+
+                            <option value="dairy">
+                                Dairy & Alternatives
+                            </option>
+
+                            <option value="syrups">
+                                Flavorings & Syrups
+                            </option>
+
+                            <option value="consumables">
+                                Consumables
+                            </option>
+
+                            <option value="food">
+                                Pastries & Food
+                            </option>
+
+                        </select>
+
+
+                        <select id="statusFilter">
+
+                            <option value="all">
+                                Status: All
+                            </option>
+
+                            <option value="in-stock">
+                                In Stock
+                            </option>
+
+                            <option value="low">
+                                Low Stock
+                            </option>
+
+                            <option value="critical">
+                                Critical
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                
+                <div
+                    class="inventory-grid"
+                    id="inventoryGrid"
+                >
+
+                    
+                    <div
+                        class="inventory-card"
+                        data-category="beans"
+                        data-status="in-stock"
+                    >
+
+                        <div class="card-top">
+
+                            <div>
+
+                                <span class="category">
+                                    BEANS & ESPRESSO
+                                </span>
+
+                                <h3>
+                                    Coffee Beans
+                                </h3>
+
+                            </div>
+
+                            <div class="item-icon">
+                                ☕
+                            </div>
+
+                        </div>
+
+
+                        <div class="stock-info">
+
+                            <div>
+                                <small>
+                                    Current Stock
+                                </small>
+
+                                <strong>
+                                    45 <span>kg</span>
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <small>
+                                    Min Threshold
+                                </small>
+
+                                <strong>
+                                    10 <span>kg</span>
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="capacity">
+
+                            <div class="capacity-label">
+                                <span>Stock capacity</span>
+                                <strong>100%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div
+                                    class="progress-bar"
+                                    style="width: 100%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <span class="status in-stock">
+                            ● In Stock
+                        </span>
+
+                    </div>
+
+
+                    
+                    <div
+                        class="inventory-card"
+                        data-category="dairy"
+                        data-status="low"
+                    >
+
+                        <div class="card-top">
+
+                            <div>
+
+                                <span class="category">
+                                    DAIRY & ALTERNATIVES
+                                </span>
+
+                                <h3>
+                                    Whole Milk
+                                </h3>
+
+                            </div>
+
+                            <div class="item-icon">
+                                ◈
+                            </div>
+
+                        </div>
+
+
+                        <div class="stock-info">
+
+                            <div>
+                                <small>
+                                    Current Stock
+                                </small>
+
+                                <strong>
+                                    8 <span>liters</span>
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <small>
+                                    Min Threshold
+                                </small>
+
+                                <strong>
+                                    15 <span>liters</span>
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="capacity">
+
+                            <div class="capacity-label">
+                                <span>Stock capacity</span>
+                                <strong>18%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div
+                                    class="progress-bar low"
+                                    style="width: 18%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <span class="status low">
+                            ● Low Stock
+                        </span>
+
+                    </div>
+
+
+                    
+                    <div
+                        class="inventory-card"
+                        data-category="syrups"
+                        data-status="in-stock"
+                    >
+
+                        <div class="card-top">
+
+                            <div>
+
+                                <span class="category">
+                                    FLAVORINGS & SYRUPS
+                                </span>
+
+                                <h3>
+                                    Vanilla Syrup
+                                </h3>
+
+                            </div>
+
+                            <div class="item-icon">
+                                ♧
+                            </div>
+
+                        </div>
+
+
+                        <div class="stock-info">
+
+                            <div>
+                                <small>
+                                    Current Stock
+                                </small>
+
+                                <strong>
+                                    22 <span>bottles</span>
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <small>
+                                    Min Threshold
+                                </small>
+
+                                <strong>
+                                    5 <span>bottles</span>
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="capacity">
+
+                            <div class="capacity-label">
+                                <span>Stock capacity</span>
+                                <strong>100%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div
+                                    class="progress-bar"
+                                    style="width: 100%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <span class="status in-stock">
+                            ● In Stock
+                        </span>
+
+                    </div>
+
+
+                    
+                    <div
+                        class="inventory-card"
+                        data-category="consumables"
+                        data-status="critical"
+                    >
+
+                        <div class="card-top">
+
+                            <div>
+
+                                <span class="category">
+                                    CONSUMABLES
+                                </span>
+
+                                <h3>
+                                    Paper Cups (12oz)
+                                </h3>
+
+                            </div>
+
+                            <div class="item-icon">
+                                ▣
+                            </div>
+
+                        </div>
+
+
+                        <div class="stock-info">
+
+                            <div>
+                                <small>
+                                    Current Stock
+                                </small>
+
+                                <strong>
+                                    3 <span>packs</span>
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <small>
+                                    Min Threshold
+                                </small>
+
+                                <strong>
+                                    10 <span>packs</span>
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="capacity">
+
+                            <div class="capacity-label">
+                                <span>Stock capacity</span>
+                                <strong>10%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div
+                                    class="progress-bar critical"
+                                    style="width: 10%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <span class="status critical">
+                            ● Critical
+                        </span>
+
+                    </div>
+
+
+                    
+                    <div
+                        class="inventory-card"
+                        data-category="food"
+                        data-status="in-stock"
+                    >
+
+                        <div class="card-top">
+
+                            <div>
+
+                                <span class="category">
+                                    PASTRIES & FOOD
+                                </span>
+
+                                <h3>
+                                    Croissants
+                                </h3>
+
+                            </div>
+
+                            <div class="item-icon">
+                                ◉
+                            </div>
+
+                        </div>
+
+
+                        <div class="stock-info">
+
+                            <div>
+                                <small>
+                                    Current Stock
+                                </small>
+
+                                <strong>
+                                    36 <span>pieces</span>
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <small>
+                                    Min Threshold
+                                </small>
+
+                                <strong>
+                                    12 <span>pieces</span>
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="capacity">
+
+                            <div class="capacity-label">
+                                <span>Stock capacity</span>
+                                <strong>100%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div
+                                    class="progress-bar"
+                                    style="width: 100%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <span class="status in-stock">
+                            ● In Stock
+                        </span>
+
+                    </div>
+
+
+                    
+                    <div
+                        class="inventory-card"
+                        data-category="dairy"
+                        data-status="in-stock"
+                    >
+
+                        <div class="card-top">
+
+                            <div>
+
+                                <span class="category">
+                                    DAIRY & ALTERNATIVES
+                                </span>
+
+                                <h3>
+                                    Oat Milk
+                                </h3>
+
+                            </div>
+
+                            <div class="item-icon">
+                                ◈
+                            </div>
+
+                        </div>
+
+
+                        <div class="stock-info">
+
+                            <div>
+                                <small>
+                                    Current Stock
+                                </small>
+
+                                <strong>
+                                    18 <span>liters</span>
+                                </strong>
+                            </div>
+
+
+                            <div>
+                                <small>
+                                    Min Threshold
+                                </small>
+
+                                <strong>
+                                    10 <span>liters</span>
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="capacity">
+
+                            <div class="capacity-label">
+                                <span>Stock capacity</span>
+                                <strong>60%</strong>
+                            </div>
+
+                            <div class="progress">
+                                <div
+                                    class="progress-bar"
+                                    style="width: 60%"
+                                ></div>
+                            </div>
+
+                        </div>
+
+
+                        <span class="status in-stock">
+                            ● In Stock
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
+

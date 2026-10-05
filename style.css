@@ -451,3 +451,15 @@ nav {
     }
 
 }
+
+.error-message {
+    color: #c82323;
+    font-size: 14px;
+    padding: 20px;
+}
+
+.empty-message {
+    color: #8e8179;
+    font-size: 14px;
+    padding: 20px;
+}

@@ -13,16 +13,6 @@ CREATE TABLE inventory (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-INSERT INTO inventory
-(item_name, category, current_stock, min_threshold, unit, status)
-VALUES
-('Coffee Beans', 'beans', 45, 10, 'kg', 'in-stock'),
-('Whole Milk', 'dairy', 8, 15, 'liters', 'low'),
-('Vanilla Syrup', 'syrups', 22, 5, 'bottles', 'in-stock'),
-('Paper Cups (12oz)', 'consumables', 3, 10, 'packs', 'critical'),
-('Croissants', 'food', 36, 12, 'pieces', 'in-stock'),
-('Oat Milk', 'dairy', 18, 10, 'liters', 'in-stock');
-
 CREATE TABLE staff (
     staff_id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -54,3 +44,14 @@ CREATE TABLE usage_waste (
     FOREIGN KEY (item_id) REFERENCES inventory(item_id) ON DELETE CASCADE,
     FOREIGN KEY (recorded_by) REFERENCES staff(staff_id) ON DELETE SET NULL
 );
+
+
+INSERT INTO inventory
+(item_name, category, current_stock, min_threshold, unit, status)
+VALUES
+('Coffee Beans', 'beans', 45, 10, 'kg', 'in-stock'),
+('Whole Milk', 'dairy', 8, 15, 'liters', 'low'),
+('Vanilla Syrup', 'syrups', 22, 5, 'bottles', 'in-stock'),
+('Paper Cups (12oz)', 'consumables', 3, 10, 'packs', 'critical'),
+('Croissants', 'food', 36, 12, 'pieces', 'in-stock'),
+('Oat Milk', 'dairy', 18, 10, 'liters', 'in-stock');

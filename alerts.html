@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrewStock - Stock Alerts</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extras.css">
+</head>
+<body>
+    <div class="app">
+
+        <aside class="sidebar">
+            <div>
+                <div class="brand">BrewStock</div>
+                <div class="brand-line"></div>
+                <nav>
+                    <a href="index.html" class="nav-item"><span>▣</span> Inventory</a>
+                    <a href="#" class="nav-item"><span>♙</span> Staff Accounts</a>
+                    <a href="#" class="nav-item"><span>🛒</span> Order Management</a>
+                    <a href="alerts.html" class="nav-item active"><span>♧</span> Stock Alerts</a>
+                    <a href="usage-waste.html" class="nav-item "><span>▤</span> Usage &amp; Waste</a>
+                </nav>
+            </div>
+            <div class="shift-status"><span></span> SHIFT ACTIVE</div>
+        </aside>
+
+        <main class="main">
+            <header class="header">
+                <div>
+                    <h1>Stock Alerts</h1>
+                    <p>Items at or below their reorder threshold, most urgent first.</p>
+                </div>
+                <div class="header-right">
+                    <div class="page-actions">
+                        <button class="btn" id="refreshBtn" type="button">Refresh</button>
+                    </div>
+                    <!-- TODO: replace with the logged-in user once login exists -->
+                    <div class="profile">
+                        <div class="avatar">ER</div>
+                        <div><strong>Elena Rostova</strong><small>Cafe Lead</small></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="stats" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="stat-card">
+                    <div class="stat-title">Critical <span class="badge red">Urgent</span></div>
+                    <h2 id="criticalCount">–</h2>
+                    <p>At or below half the threshold</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Low stock <span class="badge yellow">Action needed</span></div>
+                    <h2 id="lowCount">–</h2>
+                    <p>Below the threshold</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Total alerts</div>
+                    <h2 id="totalAlerts">–</h2>
+                    <p id="windowNote">Days to stockout uses recent usage</p>
+                </div>
+            </section>
+
+            <section class="inventory-section">
+                <div class="inventory-header">
+                    <h2>Items to reorder</h2>
+                    <div class="filters">
+                        <select id="severityFilter" aria-label="Filter by severity">
+                            <option value="all">Severity: All</option>
+                            <option value="critical">Critical</option>
+                            <option value="low">Low stock</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="inventory-grid alerts-list" id="alertsGrid" aria-live="polite"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="alerts.js"></script>
+</body>
+</html>

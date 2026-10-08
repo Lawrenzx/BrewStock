@@ -9,7 +9,8 @@ $conn = new mysqli(
     $host,
     $username,
     $password,
-    $database
+    $database,
+    3307
 );
 
 if ($conn->connect_error) {

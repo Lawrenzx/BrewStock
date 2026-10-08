@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrewStock - Usage &amp; Waste</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extras.css">
+</head>
+<body>
+    <div class="app">
+
+        <aside class="sidebar">
+            <div>
+                <div class="brand">BrewStock</div>
+                <div class="brand-line"></div>
+                <nav>
+                    <a href="index.html" class="nav-item"><span>▣</span> Inventory</a>
+                    <a href="#" class="nav-item"><span>♙</span> Staff Accounts</a>
+                    <a href="#" class="nav-item"><span>🛒</span> Order Management</a>
+                    <a href="alerts.html" class="nav-item "><span>♧</span> Stock Alerts</a>
+                    <a href="usage-waste.html" class="nav-item active"><span>▤</span> Usage &amp; Waste</a>
+                </nav>
+            </div>
+            <div class="shift-status"><span></span> SHIFT ACTIVE</div>
+        </aside>
+
+        <main class="main">
+            <header class="header">
+                <div>
+                    <h1>Usage &amp; Waste</h1>
+                    <p>See what was used and what was wasted, and log waste.</p>
+                </div>
+                <div class="header-right">
+                    <div class="filters">
+                        <select id="rangeFilter" aria-label="Report period">
+                            <option value="today">Today</option>
+                            <option value="week" selected>Last 7 days</option>
+                            <option value="month">Last 30 days</option>
+                        </select>
+                    </div>
+                    <!-- TODO: replace with the logged-in user once login exists -->
+                    <div class="profile">
+                        <div class="avatar">ER</div>
+                        <div><strong>Elena Rostova</strong><small>Cafe Lead</small></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="stats">
+                <div class="stat-card">
+                    <div class="stat-title">Items tracked</div>
+                    <h2 id="itemsTracked">–</h2>
+                    <p>With usage or waste logged</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Items with waste <span class="badge yellow">Review</span></div>
+                    <h2 id="itemsWithWaste">–</h2>
+                    <p>Had waste in this period</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Waste cost <span class="badge red">Loss</span></div>
+                    <h2 id="wasteCost">–</h2>
+                    <p id="wasteCostNote">Based on unit cost</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Most wasted</div>
+                    <h2 id="topWaste" style="font-size:18px; margin-top:16px;">–</h2>
+                    <p>Highest quantity wasted</p>
+                </div>
+            </section>
+
+            <section class="report-grid">
+                <div class="panel">
+                    <h2>Usage and waste by item</h2>
+                    <p class="panel-sub">Waste rate = wasted ÷ (used + wasted)</p>
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th class="num">Used</th>
+                                    <th class="num">Wasted</th>
+                                    <th>Waste rate</th>
+                                    <th class="num">Waste cost</th>
+                                </tr>
+                            </thead>
+                            <tbody id="byItemBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h2>Log waste</h2>
+                    <p class="panel-sub">Usage comes from stock-out entries, so only waste is logged here.</p>
+                    <div id="logForm" role="group" aria-label="Log waste">
+                        <div class="field">
+                            <label for="itemSelect">Item</label>
+                            <select id="itemSelect"></select>
+                        </div>
+                        <div class="field">
+                            <label for="wastedInput">Quantity wasted</label>
+                            <input id="wastedInput" type="number" min="0" step="0.01" value="0">
+                        </div>
+                        <div class="field">
+                            <label for="reasonInput">Reason</label>
+                            <textarea id="reasonInput" maxlength="255" placeholder="e.g. Expired, spilled, unsold at close"></textarea>
+                            
+                        </div>
+                        <div class="field">
+                            <label for="staffSelect">Recorded by</label>
+                            <select id="staffSelect"></select>
+                        </div>
+                        <button class="btn primary" id="saveBtn" type="button">Save record</button>
+                        <div class="form-message" id="formMessage" role="status"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel recent-section">
+                <h2>Recent records</h2>
+                <p class="panel-sub">Latest 15 stock-outs and waste entries in this period</p>
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>When</th>
+                                <th>Item</th>
+                                <th class="num">Used</th>
+                                <th class="num">Wasted</th>
+                                <th>Reason</th>
+                                <th>Recorded by</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="usage-waste.js"></script>
+</body>
+</html>

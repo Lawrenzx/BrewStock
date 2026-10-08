@@ -1,0 +1,288 @@
+.staff-section {
+    width: 100%;
+}
+
+.staff-table-wrap {
+    width: 100%;
+    background: white;
+    border: 1px solid #eadfd5;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.staff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+/* Head */
+
+.staff-table thead tr {
+    background: #faf6f2;
+    border-bottom: 1px solid #eadfd5;
+}
+
+.staff-table thead th {
+    padding: 13px 18px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: #7d6e65;
+    white-space: nowrap;
+}
+
+.staff-table tbody tr {
+    border-bottom: 1px solid #f4ede6;
+    transition: background 0.15s ease;
+}
+
+.staff-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.staff-table tbody tr:hover {
+    background: #fdf9f6;
+}
+
+.staff-table tbody td {
+    padding: 14px 18px;
+    color: #3a2e29;
+    vertical-align: middle;
+}
+
+.staff-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.staff-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #604631;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.staff-avatar.lead    { background: #7a4a2e; }
+.staff-avatar.barista { background: #3d6e55; }
+.staff-avatar.manager { background: #3d5070; }
+.staff-avatar.staff   { background: #6e5c3d; }
+
+.staff-name-cell strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2a1f1a;
+}
+
+.staff-table .email-cell {
+    color: #7d6e65;
+    font-size: 12px;
+}
+
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.role-badge.lead    { background: #fff0e0; color: #a05a10; }
+.role-badge.barista { background: #e5f6ec; color: #2e7d52; }
+.role-badge.manager { background: #e8edf8; color: #2d4a8a; }
+.role-badge.staff   { background: #f3eee9; color: #6f5f50; }
+
+.staff-table .date-cell {
+    color: #9b8c84;
+    font-size: 11px;
+}
+
+.staff-table .actions-cell {
+    white-space: nowrap;
+}
+
+.action-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.action-btn.edit {
+    color: #a97856;
+}
+
+.action-btn.edit:hover {
+    background: #fdf0e5;
+    color: #7d5030;
+}
+
+.action-btn.delete {
+    color: #c0503a;
+}
+
+.action-btn.delete:hover {
+    background: #ffe8e4;
+    color: #962a18;
+}
+
+.table-loading,
+.table-empty,
+.table-error {
+    text-align: center;
+    padding: 48px 20px;
+    font-size: 13px;
+}
+
+.table-loading {
+    color: #a39087;
+}
+
+.table-empty {
+    color: #a39087;
+}
+
+.table-error {
+    color: #c82323;
+}
+
+.table-loading i,
+.table-empty i {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 10px;
+    opacity: 0.45;
+}
+
+/* Spinning loader */
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.spin {
+    display: inline-block;
+    animation: spin 0.9s linear infinite;
+}
+
+.input-icon-wrap {
+    position: relative;
+}
+
+.input-icon-wrap input {
+    padding-right: 38px !important;
+}
+
+.toggle-pw {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 36px;
+    border: none;
+    background: transparent;
+    color: #a39087;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.toggle-pw:hover {
+    color: #6f5f50;
+}
+
+.label-hint {
+    font-weight: 400;
+    color: #a39087;
+    font-size: 10px;
+}
+
+.modal-sm {
+    max-width: 400px !important;
+}
+
+.delete-confirm-body {
+    text-align: center;
+    padding: 10px 0 20px;
+}
+
+.delete-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #ffe8e4;
+    color: #c0503a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 14px;
+}
+
+.delete-confirm-body p {
+    color: #5a4840;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.delete-btn {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    background: #c0503a;
+    color: white;
+    transition: background 0.18s ease;
+}
+
+.delete-btn:hover {
+    background: #a03828;
+}
+
+@media (max-width: 820px) {
+
+    .staff-table thead th:nth-child(4) ,
+    .staff-table tbody td:nth-child(4) {
+        display: none;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .staff-table thead th:nth-child(2),
+    .staff-table tbody td:nth-child(2) {
+        display: none;
+    }
+
+    .staff-table-wrap {
+        border-radius: 10px;
+    }
+
+}

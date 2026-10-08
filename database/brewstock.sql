@@ -45,6 +45,21 @@ CREATE TABLE usage_waste (
     FOREIGN KEY (recorded_by) REFERENCES staff(staff_id) ON DELETE SET NULL
 );
 
+CREATE TABLE IF NOT EXISTS orders (
+    order_id      INT AUTO_INCREMENT PRIMARY KEY,
+    supplier_name VARCHAR(150) NOT NULL,
+    item_id       INT NOT NULL,
+    quantity      DECIMAL(10,2) NOT NULL,
+    unit          VARCHAR(30)  NOT NULL,
+    status        ENUM('Pending','Ordered','Received','Cancelled') NOT NULL DEFAULT 'Pending',
+    notes         VARCHAR(255) DEFAULT NULL,
+    ordered_by    INT DEFAULT NULL,
+    order_date    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (item_id)    REFERENCES inventory(item_id) ON DELETE CASCADE,
+    FOREIGN KEY (ordered_by) REFERENCES staff(staff_id)   ON DELETE SET NULL
+);
+
 
 INSERT INTO inventory
 (item_name, category, current_stock, min_threshold, unit, status)
@@ -55,3 +70,5 @@ VALUES
 ('Paper Cups (12oz)', 'consumables', 3, 10, 'packs', 'critical'),
 ('Croissants', 'food', 36, 12, 'pieces', 'in-stock'),
 ('Oat Milk', 'dairy', 18, 10, 'liters', 'in-stock');
+
+

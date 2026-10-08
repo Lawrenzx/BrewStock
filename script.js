@@ -249,20 +249,21 @@ function getItemIcon(category) {
 
     const icons = {
 
-        beans: "☕",
+        beans: '<i class="bi bi-cup-hot"></i>',
 
-        dairy: "◈",
+        dairy: '<i class="bi bi-droplet-half"></i>',
 
-        syrups: "♧",
+        syrups: '<i class="bi bi-cup-straw"></i>',
 
-        consumables: "▣",
+        consumables: '<i class="bi bi-bag"></i>',
 
-        food: "◉"
+        food: '<i class="bi bi-basket2"></i>'
 
     };
 
 
-    return icons[category] || "□";
+    return icons[category]
+        || '<i class="bi bi-box"></i>';
 
 }
 
@@ -289,11 +290,12 @@ function updateDashboard(items) {
     const criticalItems =
         document.getElementById("criticalItems");
 
+    const categoriesEl =
+        document.getElementById("categories");
 
 
     totalItems.textContent =
         items.length;
-
 
 
     const lowCount =
@@ -301,10 +303,8 @@ function updateDashboard(items) {
             item => item.status === "low"
         ).length;
 
-
     lowStock.textContent =
         lowCount;
-
 
 
     const criticalCount =
@@ -312,9 +312,15 @@ function updateDashboard(items) {
             item => item.status === "critical"
         ).length;
 
-
     criticalItems.textContent =
         criticalCount;
+
+
+    const uniqueCategories =
+        new Set(items.map(item => item.category)).size;
+
+    categoriesEl.textContent =
+        uniqueCategories;
 
 }
 
@@ -404,3 +410,215 @@ function applyFilters() {
 }
 
 loadInventory();
+
+const addInventoryModal =
+    document.getElementById("addInventoryModal");
+
+const openAddInventory =
+    document.getElementById("openAddInventory");
+
+const closeAddInventory =
+    document.getElementById("closeAddInventory");
+
+const cancelAddInventory =
+    document.getElementById("cancelAddInventory");
+
+const addInventoryForm =
+    document.getElementById("addInventoryForm");
+
+const formMessage =
+    document.getElementById("formMessage");
+
+openAddInventory.addEventListener(
+    "click",
+    function () {
+
+        addInventoryModal.classList.add("show");
+
+    }
+);
+
+closeAddInventory.addEventListener(
+    "click",
+    closeInventoryModal
+);
+
+
+cancelAddInventory.addEventListener(
+    "click",
+    closeInventoryModal
+);
+
+addInventoryModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (event.target === addInventoryModal) {
+
+            closeInventoryModal();
+
+        }
+
+    }
+);
+
+
+// Close function
+function closeInventoryModal() {
+
+    addInventoryModal.classList.remove("show");
+
+    addInventoryForm.reset();
+
+    formMessage.textContent = "";
+
+    formMessage.className =
+        "form-message";
+
+}
+
+addInventoryForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const itemName =
+            document.getElementById("itemName").value.trim();
+
+        const category =
+            document.getElementById("itemCategory").value;
+
+        const currentStock =
+            parseFloat(
+                document.getElementById("currentStock").value
+            );
+
+        const minThreshold =
+            parseFloat(
+                document.getElementById("minThreshold").value
+            );
+
+        const unit =
+            document.getElementById("itemUnit").value;
+
+        if (
+            !itemName ||
+            !category ||
+            isNaN(currentStock) ||
+            isNaN(minThreshold) ||
+            !unit
+        ) {
+
+            showFormMessage(
+                "Please complete all fields.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (currentStock < 0 || minThreshold < 0) {
+
+            showFormMessage(
+                "Stock values cannot be negative.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "php/add_item.php",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            item_name:
+                                itemName,
+
+                            category:
+                                category,
+
+                            current_stock:
+                                currentStock,
+
+                            min_threshold:
+                                minThreshold,
+
+                            unit:
+                                unit
+
+                        })
+
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (!result.success) {
+
+                throw new Error(
+                    result.message
+                );
+
+            }
+
+
+            showFormMessage(
+                "Inventory added successfully!",
+                "success"
+            );
+
+            await loadInventory();
+
+            setTimeout(
+                closeInventoryModal,
+                700
+            );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showFormMessage(
+                error.message ||
+                "Failed to add inventory.",
+                "error"
+            );
+
+        }
+
+    }
+);
+
+function showFormMessage(
+    message,
+    type
+) {
+
+    formMessage.textContent =
+        message;
+
+    formMessage.className =
+        "form-message " + type;
+
+}

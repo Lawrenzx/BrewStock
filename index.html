@@ -3,10 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>BrewStock - Inventory</title>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -15,256 +30,160 @@
 
     <div class="app">
 
-        
         <aside class="sidebar">
 
-            <div class="brand">
-                BrewStock
-            </div>
+            <div class="logo">BrewStock</div>
 
-            <div class="brand-line"></div>
+            <nav class="nav-menu">
 
-            <nav>
-
-                <a href="#" class="nav-item active">
-                    <span>▣</span>
-                    Inventory
+                <a href="index.html" class="active">
+                    <i class="bi bi-box-seam"></i>
+                    <span>Inventory</span>
                 </a>
 
-                <a href="#" class="nav-item">
-                    <span>♙</span>
-                    Staff Accounts
+                <a href="staff.html">
+                    <i class="bi bi-people"></i>
+                    <span>Staff Accounts</span>
                 </a>
 
-                <a href="#" class="nav-item">
-                    <span>🛒</span>
-                    Order Management
+                <a href="orders.html">
+                    <i class="bi bi-cart"></i>
+                    <span>Order Management</span>
                 </a>
 
-                <a href="#" class="nav-item">
-                    <span>♧</span>
-                    Stock Alerts
+                <a href="#">
+                    <i class="bi bi-bell"></i>
+                    <span>Stock Alerts</span>
                 </a>
 
-                <a href="#" class="nav-item">
-                    <span>▤</span>
-                    Usage & Waste
+                <a href="#">
+                    <i class="bi bi-trash"></i>
+                    <span>Usage &amp; Waste</span>
                 </a>
 
             </nav>
 
-            <div class="shift-status">
-                <span></span>
+            <div class="shift-active">
+                <span class="shift-dot"></span>
                 SHIFT ACTIVE
             </div>
 
         </aside>
 
-
-       
         <main class="main">
 
-          
             <header class="header">
 
                 <div>
                     <h1>Inventory</h1>
-
-                    <p>
-                        Track, log, and reorder daily cafe supplies.
-                    </p>
+                    <p>Track, log, and reorder daily cafe supplies.</p>
                 </div>
-
 
                 <div class="header-right">
 
                     <div class="search-box">
-
-                        <span>⌕</span>
-
+                        <i class="bi bi-search"></i>
                         <input
                             type="text"
                             id="searchInput"
                             placeholder="Search items..."
                         >
-
                     </div>
 
-
                     <div class="profile">
-
-                        <div class="avatar">
-                            ER
-                        </div>
-
+                        <div class="avatar">ER</div>
                         <div>
                             <strong>Elena Rostova</strong>
                             <small>Cafe Lead</small>
                         </div>
-
                     </div>
 
                 </div>
 
             </header>
 
-
-           
             <section class="stats">
 
                 <div class="stat-card">
-
                     <div class="stat-title">
                         Total Items
-
-                        <span class="badge green">
-                            Active
-                        </span>
+                        <span class="badge green">Active</span>
                     </div>
-
-                    <h2 id="totalItems">
-                        124
-                    </h2>
-
-                    <p>
-                        Tracked café supply SKUs
-                    </p>
-
+                    <h2 id="totalItems">—</h2>
+                    <p>Tracked café supply SKUs</p>
                 </div>
 
-
                 <div class="stat-card">
-
                     <div class="stat-title">
                         Low Stock Alerts
-
-                        <span class="badge yellow">
-                            Action Needed
-                        </span>
+                        <span class="badge yellow">Action Needed</span>
                     </div>
-
-                    <h2 id="lowStock">
-                        2
-                    </h2>
-
-                    <p>
-                        Items below safety threshold
-                    </p>
-
+                    <h2 id="lowStock">—</h2>
+                    <p>Items below safety threshold</p>
                 </div>
 
-
                 <div class="stat-card">
-
                     <div class="stat-title">
                         Critical Items
-
-                        <span class="badge red">
-                            Urgent
-                        </span>
+                        <span class="badge red">Urgent</span>
                     </div>
-
-                    <h2 id="criticalItems">
-                        1
-                    </h2>
-
-                    <p>
-                        Requires immediate reorder
-                    </p>
-
+                    <h2 id="criticalItems">—</h2>
+                    <p>Requires immediate reorder</p>
                 </div>
 
-
                 <div class="stat-card">
-
                     <div class="stat-title">
                         Stock Categories
                     </div>
-
-                    <h2 id="categories">
-                        8
-                    </h2>
-
-                    <p>
-                        Active inventory categories
-                    </p>
-
+                    <h2 id="categories">—</h2>
+                    <p>Active inventory categories</p>
                 </div>
 
             </section>
 
-
-           
             <section class="inventory-section">
 
                 <div class="inventory-header">
 
-                    <h2>
-                        All Café Supplies
-                    </h2>
+                    <div class="inventory-title">
+                        <h2>All Café Supplies</h2>
+                    </div>
 
-                    <div class="filters">
+                    <div class="inventory-actions">
 
-                        <select id="categoryFilter">
+                        <button
+                            class="add-inventory-btn"
+                            id="openAddInventory"
+                        >
+                            <i class="bi bi-plus-lg"></i>
+                            Add Inventory
+                        </button>
 
-                            <option value="all">
-                                Category: All
-                            </option>
+                        <div class="filters">
 
-                            <option value="beans">
-                                Beans & Espresso
-                            </option>
+                            <select id="categoryFilter">
+                                <option value="all">Category: All</option>
+                                <option value="beans">Beans &amp; Espresso</option>
+                                <option value="dairy">Dairy &amp; Alternatives</option>
+                                <option value="syrups">Flavorings &amp; Syrups</option>
+                                <option value="consumables">Consumables</option>
+                                <option value="food">Pastries &amp; Food</option>
+                            </select>
 
-                            <option value="dairy">
-                                Dairy & Alternatives
-                            </option>
+                            <select id="statusFilter">
+                                <option value="all">Status: All</option>
+                                <option value="in-stock">In Stock</option>
+                                <option value="low">Low Stock</option>
+                                <option value="critical">Critical</option>
+                            </select>
 
-                            <option value="syrups">
-                                Flavorings & Syrups
-                            </option>
-
-                            <option value="consumables">
-                                Consumables
-                            </option>
-
-                            <option value="food">
-                                Pastries & Food
-                            </option>
-
-                        </select>
-
-
-                        <select id="statusFilter">
-
-                            <option value="all">
-                                Status: All
-                            </option>
-
-                            <option value="in-stock">
-                                In Stock
-                            </option>
-
-                            <option value="low">
-                                Low Stock
-                            </option>
-
-                            <option value="critical">
-                                Critical
-                            </option>
-
-                        </select>
+                        </div>
 
                     </div>
 
                 </div>
 
-
-                
-                <div
-                    class="inventory-grid"
-                    id="inventoryGrid"
-                >
-                </div>
+                <div class="inventory-grid" id="inventoryGrid"></div>
 
             </section>
 
@@ -272,11 +191,97 @@
 
     </div>
 
+    <div class="modal" id="addInventoryModal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div>
+                    <h2>Add Inventory</h2>
+                    <p>Add a new café supply item.</p>
+                </div>
+                <button class="close-modal" id="closeAddInventory">×</button>
+            </div>
+
+            <form id="addInventoryForm">
+
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input
+                        type="text"
+                        id="itemName"
+                        placeholder="e.g. Chocolate Syrup"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="itemCategory" required>
+                        <option value="">Select category</option>
+                        <option value="beans">Beans &amp; Espresso</option>
+                        <option value="dairy">Dairy &amp; Alternatives</option>
+                        <option value="syrups">Flavorings &amp; Syrups</option>
+                        <option value="consumables">Consumables</option>
+                        <option value="food">Pastries &amp; Food</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Current Stock</label>
+                        <input
+                            type="number"
+                            id="currentStock"
+                            min="0"
+                            step="0.01"
+                            placeholder="0"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Minimum Threshold</label>
+                        <input
+                            type="number"
+                            id="minThreshold"
+                            min="0"
+                            step="0.01"
+                            placeholder="0"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Unit</label>
+                    <select id="itemUnit" required>
+                        <option value="">Select unit</option>
+                        <option value="kg">Kilograms</option>
+                        <option value="liters">Liters</option>
+                        <option value="bottles">Bottles</option>
+                        <option value="packs">Packs</option>
+                        <option value="pieces">Pieces</option>
+                    </select>
+                </div>
+
+                <div class="form-message" id="formMessage"></div>
+
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" id="cancelAddInventory">Cancel</button>
+                    <button type="submit" class="save-btn">Add Inventory</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 
 </body>
 
 </html>
-
-
